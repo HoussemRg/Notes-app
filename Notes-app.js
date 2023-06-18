@@ -1,33 +1,20 @@
 
 let arrayOfNotes=new Array();
-for(let i=1;i<=6;i++){
-    let a=document.getElementById(`note${i}`)
-    arrayOfNotes.push(a);
-}
-
-
+let secondContainer=document.querySelector('.flex-2');
+console.log(secondContainer.innerHTML);
 let index=0;
-function insertNote(){
-    if(index<6){
-        arrayOfNotes[index].classList.add("text-added");
-        console.log(arrayOfNotes[index].classList);
-        index+=1;
-        console.log(index);
-    }
-    else{
-        alert("Pas encore");
-    }
+function addNote(){
+    secondContainer.innerHTML+=`<div class="text" id="note">
+                               <textarea name="txt" id="txt" cols="52" rows="13"></textarea>
+                               <button id="del-btn-${index}" onclick="deleteNote(this);"><img src="images/delete.png" alt="del" class="img-del"></button>
+                               </div>`;
+}
+let btn=document.querySelector('#btn');
+btn.onclick=addNote;
+
+function deleteNote(button){
+    button.parentElement.remove();
 }
 
-function deleteNote(){
-    arrayOfNotes[index].classList.remove("text-added");
-    console.log(arrayOfNotes[index].classList);
-    index--;
-}
-
-let insertButton=document.getElementById('btn');
-insertButton.onclick=insertNote;
-
-let deleteButton=arrayOfNotes[index].querySelector('button');
 
 
